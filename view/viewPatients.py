@@ -10,6 +10,7 @@ loadimage = None
 def create_sidebar(app):
     global loadimage
     connect("./resources/serviceAccountKey.json")
+    
     # Configurar el color de fondo de la barra lateral
     sidebar_color = "#77CCC1"
     sidebar_blank_color = "white"
@@ -34,14 +35,15 @@ def create_sidebar(app):
     sidebar_list.pack(fill="both", side="left", expand=True)
 
     loadimage = tk.PhotoImage(file="./resources/img/logout.png")
-    loadimage = loadimage.subsample(5, 5) 
+    loadimage = loadimage.subsample(3, 3) 
+
     # Create a Canvas widget
     canvas = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
-    canvas.pack()
+    canvas.pack(side="bottom", pady=(0,20))  # Alinea el canvas en la parte inferior
 
     # Create a rounded button with the loaded image
     rounded_button = tk.Button(canvas, image=loadimage, bg=sidebar_color, bd=0, command=logout)
-    canvas.create_window(100, 30, window=rounded_button)
+    rounded_button.pack(side="bottom", pady=10)  # Alinea el botón en la parte inferior del canvas
 
 def logout():
     pass
