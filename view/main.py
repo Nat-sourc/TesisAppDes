@@ -28,6 +28,14 @@ class Aplicacion(tk.Tk):
             if pagina_nombre == nombre_pagina:
                 self.pagina_actual = pagina_clase(self)
                 break
+    def mostrar_paginaConId(self, nombre_pagina,id):
+        for widget in self.winfo_children():
+            widget.destroy()  # Destruir todos los widgets en la ventana actual
+
+        for pagina_nombre, pagina_clase in self.paginas.items():
+            if pagina_nombre == nombre_pagina:
+                self.pagina_actual = pagina_clase(self,id)
+                break
 
 if __name__ == "__main__":
     app = Aplicacion()

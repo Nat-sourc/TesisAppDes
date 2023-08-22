@@ -249,11 +249,9 @@ class ViewPatients:
 
     def load_patient_data(self):
         if self.selected_patient_id:
-            # You can use self.selected_patient_id to fetch and display the selected patient's data
-            print("Loading patient data for:", self.selected_patient_id)
             selected_folder = filedialog.askdirectory()
-            print(selected_folder)
             download_test(selected_folder,self.selected_patient_id, self.bucket)
+            self.master.mostrar_paginaConId("ViewTask",self.selected_patient_id)
         else:
             print("No patient selected")
     
