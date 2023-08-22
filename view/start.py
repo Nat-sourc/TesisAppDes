@@ -66,7 +66,6 @@ class Start(tk.Frame):
 
 
     def ir_a_view_patients(self):
-
         self.master.mostrar_pagina("ViewPatients")
 
 if __name__ == '__main__':

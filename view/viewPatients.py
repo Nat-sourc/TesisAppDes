@@ -3,12 +3,16 @@ from tkinter import ttk
 from tkcalendar import Calendar
 from PIL import Image, ImageTk
 from connectToFirebase import connect
+import firebase_admin
 from firebase_admin import credentials, firestore
+from firebase_admin import storage
 from tkinter import Scrollbar
 import datetime
 from tkinter import Radiobutton
-
-
+from tkinter import filedialog
+from tkinter import messagebox
+import os
+from zipfile import ZipFile
 
 class ViewPatients:
     def __init__(self,master=None, root=None):
@@ -20,14 +24,21 @@ class ViewPatients:
         self.lupa_img = None
         self.date_img = None
         self.loadimage = None
+        self.folder_var=None
         self.connect_firebase()
         self.create_sidebar()
 
     def connect_firebase(self):
-        connect("./resources/serviceAccountKey.json")
+        #connect("./resources/serviceAccountKey.json")
+        cred = credentials.Certificate("./resources/serviceAccountKey.json")
+        firebase_admin.initialize_app(cred, {
+            'storageBucket': 'tesis-ee155.appspot.com'  # Reemplaza con el nombre real de tu bucket
+        })
+        self.bucket = storage.bucket() 
 
     def create_sidebar(self):
         global loadimage, lupa_img, date_img
+        
         sidebar_color = "#77CCC1"
         sidebar_blank_color = "white"
         sidebar_calendar_color = "#C6F4EE"
@@ -110,8 +121,6 @@ class ViewPatients:
         patient_id_entry = ttk.Entry(sidebar_calendar)
         patient_id_entry.pack(fill="x", padx=30, pady=(0, 20))
 
-
-        ####
         patient_id_label_frame2 = ttk.Frame(
             sidebar_calendar,
             style="Red.TFrame",
@@ -249,8 +258,44 @@ class ViewPatients:
         if self.selected_patient_id:
             # You can use self.selected_patient_id to fetch and display the selected patient's data
             print("Loading patient data for:", self.selected_patient_id)
+            selected_folder = filedialog.askdirectory()
+            print(selected_folder)
+            self.download_test(selected_folder)
         else:
             print("No patient selected")
+    def download_test(self, selected_folder):
+        # Obtener la carpeta de descarga seleccionada
+        self.folder_var = tk.StringVar(value="Carpeta no seleccionada")
+        self.folder_var.set(selected_folder)
+        download_folder = self.folder_var.get()
+        pID = self.selected_patient_id
+        
+        # Verificar si se ha seleccionado una carpeta válida
+        if download_folder == "Carpeta no seleccionada" or download_folder == "":
+            messagebox.showinfo(message="Debe seleccionar una carpeta de descarga.", title="Seleccionar Carpeta")
+            return
+        
+        # Construir la ruta completa de la carpeta de destino para el archivo ZIP
+        folder_pathD = pID
+        
+        # Verificar si la carpeta del paciente ya existe, si no, crearla
+        if not os.path.isdir(os.path.join(download_folder, pID)):
+            os.mkdir(os.path.join(download_folder, pID))
+
+        # Ruta en Firebase Storage
+        firebase_path = pID
+        
+        # Descargar el archivo ZIP desde Firebase Storage
+        blob = self.bucket.blob(firebase_path + '/dualTask.zip')
+        zip_file_path = os.path.join(download_folder, folder_pathD, "dualTask.zip")
+        blob.download_to_filename(zip_file_path)
+
+        # Extraer todos los archivos a la carpeta de destino
+        with ZipFile(zip_file_path, 'r') as f:
+            f.extractall(os.path.join(download_folder, folder_pathD))
+
+        # Eliminar el archivo ZIP descargado
+        os.remove(zip_file_path)
 
 
     def logout(self):
