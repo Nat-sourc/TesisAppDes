@@ -6,6 +6,9 @@ from connectToFirebase import connect
 from firebase_admin import credentials, firestore
 from tkinter import Scrollbar
 import datetime
+from tkinter import Radiobutton
+
+
 
 class ViewPatients:
     def __init__(self,master=None, root=None):
@@ -154,7 +157,7 @@ class ViewPatients:
 
         search_button = ttk.Button(sidebar_calendar,
                                 text="Buscar",
-                                command=lambda: self.perform_search(sidebar_list2, patient_id_entry,cal),
+                                command=lambda: self.perform_search(sidebar_list2, patient_id_entry,cal, sidebar_calendar),
                                 style="Search.TButton",
                                 width=20,  # Ajusta el ancho del botón
                                 )
@@ -172,9 +175,7 @@ class ViewPatients:
         # Establecer el color de texto de los elementos en el sidebar_list
         style = ttk.Style()
         style.configure("TLabel", foreground="#333333")
-    
-
-
+        
         try:
             db = firestore.client()
             patients_ref = db.collection('pacientes')
@@ -185,6 +186,14 @@ class ViewPatients:
                 patient_frame = tk.Frame(sidebar_list2, bg="white")
                 patient_frame.pack(fill="x", padx=10, pady=5)
 
+                select_patient_radiobutton = Radiobutton(
+                    patient_frame,
+                    value=patient_data['id'],
+                    bg="white",
+                    command=lambda patient_id=patient_data['id']: self.select_patient(patient_id)
+                )
+                select_patient_radiobutton.pack(side="left", padx=5, pady=2)
+
                 patient_id_label = tk.Label(
                     patient_frame,
                     text=f"{patient_data['id']}",
@@ -192,38 +201,62 @@ class ViewPatients:
                     bg="white",
                     fg="#00BFA6"
                 )
-                patient_id_label.pack(fill="x", padx=10, pady=2, anchor="w")  # Alinear a la izquierda
+                patient_id_label.pack(fill="x", padx=10, pady=2, anchor="w")
 
                 patient_genero_label = tk.Label(
                     patient_frame,
                     text=f"Género: {patient_data['genero']}",
-                    font=("Arial", 12),  # Cambiar el tamaño de fuente según tu preferencia
+                    font=("Arial", 12),
                     bg="white",
                     fg="#333333"
                 )
-                patient_genero_label.pack(fill="x", padx=10, pady=2, anchor="w")  # Alinear a la izquierda
+                patient_genero_label.pack(fill="x", padx=10, pady=2, anchor="w")
 
-                patient_genero_label = tk.Label(
+                patient_fecha_label = tk.Label(
                     patient_frame,
                     text=f"Fecha: {patient_data['fechaCreacion'].strftime('%d-%m-%Y')}",
-                    font=("Arial", 12),  # Cambiar el tamaño de fuente según tu preferencia
+                    font=("Arial", 12),
                     bg="white",
                     fg="#333333"
                 )
-                patient_genero_label.pack(fill="x", padx=10, pady=2, anchor="w")  # Alinear a la izquierda
+                patient_fecha_label.pack(fill="x", padx=10, pady=2, anchor="w")
+
 
 
 
         except Exception as e:
             print("Firebase Error:", e)
 
-            # ... (continuar con el código existente)
+        style = ttk.Style()
+        style.configure("Search.TButton", background="#77CCC1")
+        style.configure("Load.TButton",
+                        background="#87E1D5")
+
+        self.load_button = ttk.Button(sidebar_calendar,
+                                      text="Cargar",
+                                      command=self.load_patient_data,
+                                      style="Load.TButton",
+                                      state=tk.DISABLED)
+        self.load_button.pack( pady=5)
+
+    def select_patient(self, patient_id):
+        self.selected_patient_id = patient_id  # Store the selected patient ID
+        print("Selected patient:", patient_id)
+        self.load_button.config(state=tk.NORMAL)  # Enable the Load button
+
+
+    def load_patient_data(self):
+        if self.selected_patient_id:
+            # You can use self.selected_patient_id to fetch and display the selected patient's data
+            print("Loading patient data for:", self.selected_patient_id)
+        else:
+            print("No patient selected")
+
 
     def logout(self):
         self.master.mostrar_pagina("Start")
 
-    
-    def perform_search(self,sidebar_list2,patient_id_entry,cal):
+    def perform_search(self,sidebar_list2,patient_id_entry,cal,sidebar_calendar):
         # Clear previous search results
         for widget in sidebar_list2.winfo_children():
             widget.destroy()
@@ -252,6 +285,13 @@ class ViewPatients:
                 patient_frame = tk.Frame(sidebar_list2, bg="white")
                 patient_frame.pack(fill="x", padx=10, pady=5)
 
+                select_patient_radiobutton = Radiobutton(
+                    patient_frame,
+                    bg="white",
+                    value=patient_data['id'],
+                    command=lambda patient_id=patient_data['id']: self.select_patient(patient_id)
+                )
+                select_patient_radiobutton.pack(side="left", padx=5, pady=2)
                 patient_id_label = tk.Label(
                     patient_frame,
                     text=f"{patient_data['id']}",
@@ -259,7 +299,7 @@ class ViewPatients:
                     bg="white",
                     fg="#00BFA6"
                 )
-                patient_id_label.pack(fill="x", padx=10, pady=2, anchor="w")  # Alinear a la izquierda
+                patient_id_label.pack(fill="x", padx=10, pady=2, anchor="w")
                 patient_genero_label = tk.Label(
                     patient_frame,
                     text=f"Género: {patient_data['genero']}",
@@ -280,6 +320,10 @@ class ViewPatients:
         except Exception as e:
             print("Firebase Error:", e)
 
+        
+        
+
+
 if __name__ == '__main__':
     app = tk.Tk()
     app.geometry("1340x768")
@@ -289,5 +333,9 @@ if __name__ == '__main__':
     style = ttk.Style()
     style.configure("Search.TButton", background="#77CCC1")
 
+    # Configure the style for the Load button
+    style.configure("Load.TButton", background="#87E1D5", foreground="white")
+
+    
     my_app = ViewPatients(root=app)
     app.mainloop()

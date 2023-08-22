@@ -1,6 +1,7 @@
 import tkinter as tk
 from start import Start
 from viewPatients import ViewPatients
+from viewTask import ViewTask
 from tkinter import PhotoImage
 from PIL import Image, ImageTk  
 
@@ -12,7 +13,8 @@ class Aplicacion(tk.Tk):
         
         self.paginas = {
             "Start": Start,
-            "ViewPatients": ViewPatients
+            "ViewPatients": ViewPatients,
+            "ViewTask": ViewTask
         }
 
         self.mostrar_pagina("Start")
