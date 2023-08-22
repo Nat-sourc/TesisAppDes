@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkcalendar import Calendar
 from PIL import Image, ImageTk
-from connectToFirebase import connect
+from connectToFirebase import connect, download_test
 import firebase_admin
 from firebase_admin import credentials, firestore
 from firebase_admin import storage
@@ -10,9 +10,6 @@ from tkinter import Scrollbar
 import datetime
 from tkinter import Radiobutton
 from tkinter import filedialog
-from tkinter import messagebox
-import os
-from zipfile import ZipFile
 
 class ViewPatients:
     def __init__(self,master=None, root=None):
@@ -29,11 +26,7 @@ class ViewPatients:
         self.create_sidebar()
 
     def connect_firebase(self):
-        #connect("./resources/serviceAccountKey.json")
-        cred = credentials.Certificate("./resources/serviceAccountKey.json")
-        firebase_admin.initialize_app(cred, {
-            'storageBucket': 'tesis-ee155.appspot.com'  # Reemplaza con el nombre real de tu bucket
-        })
+        connect("./resources/serviceAccountKey.json")
         self.bucket = storage.bucket() 
 
     def create_sidebar(self):
@@ -260,53 +253,10 @@ class ViewPatients:
             print("Loading patient data for:", self.selected_patient_id)
             selected_folder = filedialog.askdirectory()
             print(selected_folder)
-            self.download_test(selected_folder)
+            download_test(selected_folder,self.selected_patient_id, self.bucket)
         else:
             print("No patient selected")
-    def download_test(self, selected_folder):
-        # Obtener la carpeta de descarga seleccionada
-        self.folder_var = tk.StringVar(value="Carpeta no seleccionada")
-        self.folder_var.set(selected_folder)
-        download_folder = self.folder_var.get()
-        pID = self.selected_patient_id
-        
-        # Verificar si se ha seleccionado una carpeta válida
-        if download_folder == "Carpeta no seleccionada" or download_folder == "":
-            messagebox.showinfo(message="Debe seleccionar una carpeta de descarga.", title="Seleccionar Carpeta")
-            return
-        
-        # Construir la ruta completa de la carpeta de destino para el archivo ZIP
-        folder_pathD = pID
-        
-        # Verificar si la carpeta del paciente ya existe, si no, crearla
-        if not os.path.isdir(os.path.join(download_folder, pID)):
-            os.mkdir(os.path.join(download_folder, pID))
-
-        # Ruta en Firebase Storage
-        firebase_path = pID
-        
-        # Descargar el archivo ZIP desde Firebase Storage
-        blob = self.bucket.blob(firebase_path + '/dualTask.zip')
-        zip_file_path = os.path.join(download_folder, folder_pathD, "dualTask.zip")
-        blob.download_to_filename(zip_file_path)
-
-        # Extraer todos los archivos a la carpeta de destino
-        with ZipFile(zip_file_path, 'r') as f:
-            f.extractall(os.path.join(download_folder, folder_pathD))
-
-        # Eliminar el archivo ZIP descargado
-        os.remove(zip_file_path)
-
-        blob = self.bucket.blob(firebase_path + '/bradicinesia.zip')
-        zip_file_path = os.path.join(download_folder, folder_pathD, "bradicinesia.zip")
-        blob.download_to_filename(zip_file_path)
-
-        # Extraer todos los archivos a la carpeta de destino
-        with ZipFile(zip_file_path, 'r') as f:
-            f.extractall(os.path.join(download_folder, folder_pathD))
-
-        # Eliminar el archivo ZIP descargado
-        os.remove(zip_file_path)
+    
 
 
     def logout(self):
