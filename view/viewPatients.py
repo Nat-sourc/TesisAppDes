@@ -297,6 +297,17 @@ class ViewPatients:
         # Eliminar el archivo ZIP descargado
         os.remove(zip_file_path)
 
+        blob = self.bucket.blob(firebase_path + '/bradicinesia.zip')
+        zip_file_path = os.path.join(download_folder, folder_pathD, "bradicinesia.zip")
+        blob.download_to_filename(zip_file_path)
+
+        # Extraer todos los archivos a la carpeta de destino
+        with ZipFile(zip_file_path, 'r') as f:
+            f.extractall(os.path.join(download_folder, folder_pathD))
+
+        # Eliminar el archivo ZIP descargado
+        os.remove(zip_file_path)
+
 
     def logout(self):
         self.master.mostrar_pagina("Start")
