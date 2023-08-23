@@ -65,7 +65,7 @@ class ViewPatients:
 
         loadimage = Image.open("./resources/img/logout.png")
         loadimage = tk.PhotoImage(file="./resources/img/logout.png")
-        loadimage = loadimage.subsample(3, 3) 
+        loadimage = loadimage.subsample(8, 8)
 
         # Create a Canvas widget
         canvas = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)

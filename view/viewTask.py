@@ -4,9 +4,8 @@ from tkcalendar import Calendar
 from PIL import Image, ImageTk
 from connectToFirebase import connect
 
-
 class ViewTask:
-    def __init__(self,master=None, patient_id=None,root=None):
+    def __init__(self, master=None, patient_id=None, root=None):
         self.master = master
         self.root = root
         self.setup_ui()
@@ -19,25 +18,79 @@ class ViewTask:
         self.create_sidebar()
 
     def create_sidebar(self):
-        global loadimage, lupa_img, date_img
+        global loadimage, homeimage, volverimage, volverATaskimage
         sidebar_color = "#77CCC1"
 
         sidebar = tk.Frame(self.root, bg=sidebar_color, width=150)
         sidebar.pack(fill="y", side="left")
 
+        for _ in range(3):
+            tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
+
+        homeimage = Image.open("./resources/img/home.png")
+        homeimage = tk.PhotoImage(file="./resources/img/home.png")
+        homeimage = homeimage.subsample(8, 8)
+
+        canvashome = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
+        canvashome.pack(side="top", pady=(0, 10))
+
+        for _ in range(3):
+            tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
+        
+
+        rounded_buttonhome = tk.Button(canvashome, image=homeimage, bg=sidebar_color, bd=0, command=self.home)
+        rounded_buttonhome.pack(side="top", pady=10)
+
+        volverATaskimage = Image.open("./resources/img/volverATask.png")
+        volverATaskimage = tk.PhotoImage(file="./resources/img/volverATask.png")
+        volverATaskimage = volverATaskimage.subsample(8, 8)
+
+        canvasvolverATask = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
+        canvasvolverATask.pack(side="top", pady=(0, 10))
+
+        for _ in range(3):
+            tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
+
+        rounded_buttonVolverATask = tk.Button(canvasvolverATask, image=volverATaskimage, bg=sidebar_color, bd=0, command=self.vieTask)
+        rounded_buttonVolverATask.pack(side="top", pady=10)
+
+        volverimage = Image.open("./resources/img/atras.png")
+        volverimage = tk.PhotoImage(file="./resources/img/atras.png")
+        volverimage = volverimage.subsample(8, 8)
+
+        canvasvolver = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
+        canvasvolver.pack(side="top", pady=(0, 10))
+
+        for _ in range(3):
+            tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
+
+        rounded_buttonVolver = tk.Button(canvasvolver, image=volverimage, bg=sidebar_color, bd=0, command=self.atras)
+        rounded_buttonVolver.pack(side="top", pady=10)
+
         loadimage = Image.open("./resources/img/logout.png")
         loadimage = tk.PhotoImage(file="./resources/img/logout.png")
-        loadimage = loadimage.subsample(3, 3) 
+        loadimage = loadimage.subsample(8, 8)
 
-        # Create a Canvas widget
         canvas = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
-        canvas.pack(side="bottom", pady=(0,10))
+        canvas.pack(side="top", pady=(0, 10))
+
+        for _ in range(3):
+            tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
 
         rounded_button = tk.Button(canvas, image=loadimage, bg=sidebar_color, bd=0, command=self.logout)
-        rounded_button.pack(side="bottom", pady=10)
+        rounded_button.pack(side="top", pady=10)
 
     def logout(self):
         self.master.mostrar_pagina("Start")
+
+    def home(self):
+        pass
+
+    def atras(self):
+        pass
+
+    def vieTask(self):
+        pass
 
 if __name__ == '__main__':
     app = tk.Tk()
