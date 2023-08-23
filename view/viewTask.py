@@ -20,6 +20,8 @@ class ViewTask:
     def create_sidebar(self):
         global loadimage, homeimage, volverimage, volverATaskimage
         sidebar_color = "#77CCC1"
+        sidebar_list_color = "#C4F1EB" 
+        sidebar_blank_color = "white"
 
         sidebar = tk.Frame(self.root, bg=sidebar_color, width=150)
         sidebar.pack(fill="y", side="left")
@@ -79,6 +81,24 @@ class ViewTask:
 
         rounded_button = tk.Button(canvas, image=loadimage, bg=sidebar_color, bd=0, command=self.logout)
         rounded_button.pack(side="top", pady=10)
+        
+        sidebar_blank = tk.Frame(self.root, bg=sidebar_blank_color, width=20)
+        sidebar_blank.pack(fill="y", side="left")
+
+        sidebar_list = tk.Frame(self.root, bg="white", width=700)
+        sidebar_list.pack(fill="both", side="left", expand=True)
+
+        sidebar_list_title = tk.Frame(sidebar_list, bg=sidebar_list_color)
+        sidebar_list_title.pack(fill="x")
+
+        title_label = tk.Label(
+            sidebar_list_title,
+            text="BRAINFIT",
+            font=("Arial", 20, "bold"),
+            bg=sidebar_list_color,
+            fg="#00BFA6"
+        )
+        title_label.pack(side="left",padx=10, pady=10)
 
     def logout(self):
         self.master.mostrar_pagina("Start")
