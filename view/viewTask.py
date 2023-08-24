@@ -18,10 +18,10 @@ class ViewTask:
         self.create_sidebar()
 
     def create_sidebar(self):
-        global loadimage, homeimage, volverimage, volverATaskimage
+        global loadimage, homeimage, volverimage, volverATaskimage, botonBrad
         sidebar_color = "#77CCC1"
         sidebar_list_color = "#C4F1EB" 
-        sidebar_blank_color = "white"
+        sidebar_blank_color = "#E5F5F3"
 
         sidebar = tk.Frame(self.root, bg=sidebar_color, width=150)
         sidebar.pack(fill="y", side="left")
@@ -85,7 +85,7 @@ class ViewTask:
         sidebar_blank = tk.Frame(self.root, bg=sidebar_blank_color, width=20)
         sidebar_blank.pack(fill="y", side="left")
 
-        sidebar_list = tk.Frame(self.root, bg="white", width=700)
+        sidebar_list = tk.Frame(self.root, bg="#E5F5F3", width=700)
         sidebar_list.pack(fill="both", side="left", expand=True)
 
         sidebar_list_title = tk.Frame(sidebar_list, bg=sidebar_list_color)
@@ -100,6 +100,33 @@ class ViewTask:
         )
         title_label.pack(side="left",padx=10, pady=10)
 
+        for _ in range(3):
+            tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
+
+        self.botonBrad = tk.PhotoImage(file="./resources/img/botonBrad.png")
+        self.botonBrad = self.botonBrad.subsample(5, 5) 
+        # Create a Canvas widget
+        self.canvasBrad = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+        self.canvasBrad.pack(side="top")
+
+        # Create a rounded button with the loaded image
+        self.rounded_buttonBrad = tk.Button(self.canvasBrad, image=self.botonBrad, bg="white", bd=0, command=self.bradicinesia)
+        self.rounded_buttonBrad.pack(side="top")
+
+        for _ in range(3):
+            tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
+
+        self.botonDual = tk.PhotoImage(file="./resources/img/botonDual.png")
+        self.botonDual = self.botonDual.subsample(5, 5) 
+        # Create a Canvas widget
+        self.canvasDual = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+        self.canvasDual.pack(side="top")
+
+        # Create a rounded button with the loaded image
+        self.rounded_buttonDual = tk.Button(self.canvasDual, image=self.botonDual, bg="white", bd=0, command=self.dual)
+        self.rounded_buttonDual.pack(side="top")
+
+
     def logout(self):
         self.master.mostrar_pagina("Start")
 
@@ -110,6 +137,12 @@ class ViewTask:
         pass
 
     def vieTask(self):
+        pass
+    
+    def dual(self):
+        pass
+
+    def bradicinesia(self):
         pass
 
 if __name__ == '__main__':
