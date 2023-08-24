@@ -3,11 +3,14 @@ from tkinter import ttk
 from tkcalendar import Calendar
 from PIL import Image, ImageTk
 from connectToFirebase import connect
+import firebase_admin
+from firebase_admin import firestore
 
 class ViewTask:
     def __init__(self, master=None, patient_id=None, root=None):
         self.master = master
         self.root = root
+        self.patient_id=patient_id
         self.setup_ui()
         print(patient_id)
 
@@ -16,12 +19,15 @@ class ViewTask:
         self.date_img = None
         self.loadimage = None
         self.create_sidebar()
+    
 
     def create_sidebar(self):
         global loadimage, homeimage, volverimage, volverATaskimage, botonBrad
         sidebar_color = "#77CCC1"
         sidebar_list_color = "#C4F1EB" 
         sidebar_blank_color = "#E5F5F3"
+
+        db = firestore.client()
 
         sidebar = tk.Frame(self.root, bg=sidebar_color, width=150)
         sidebar.pack(fill="y", side="left")
@@ -125,6 +131,27 @@ class ViewTask:
         # Create a rounded button with the loaded image
         self.rounded_buttonDual = tk.Button(self.canvasDual, image=self.botonDual, bg="white", bd=0, command=self.dual)
         self.rounded_buttonDual.pack(side="top")
+
+        patient_ref = db.collection("pacientes").document(self.patient_id)
+        patient_data = patient_ref.get()
+        
+        if patient_data.exists:
+            patient_data_dict = patient_data.to_dict()
+            # Check if completeBradicinesis is true or false
+            complete_bradicinesis = patient_data_dict.get("completeBradicinesis", False)
+            complete_Dual = patient_data_dict.get("completetask", False)
+            # Update button state
+            if complete_bradicinesis:
+                self.rounded_buttonBrad.config(state="normal")  # Enable the button
+            else:
+                self.rounded_buttonBrad.config(state="disabled")  # Disable the button
+
+            if complete_Dual:
+                self.rounded_buttonDual.config(state="normal")  # Enable the button
+            else:
+                self.rounded_buttonDual.config(state="disabled")  # Disable the button
+        else:
+            print("Patient data not found for ID:", patient_id)
 
 
     def logout(self):
