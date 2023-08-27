@@ -2,17 +2,17 @@ import tkinter as tk
 from tkinter import ttk
 from tkcalendar import Calendar
 from PIL import Image, ImageTk
-from connectToFirebase import connect
 import firebase_admin
 from firebase_admin import firestore
 
 class ViewTask:
-    def __init__(self, master=None, patient_id=None, root=None):
+    def __init__(self, master=None, patient_id=None, pageA=None,root=None):
         self.master = master
         self.root = root
         self.patient_id=patient_id
+        self.pageA=pageA
         self.setup_ui()
-        print(patient_id)
+        print(pageA)
 
     def setup_ui(self):
         self.lupa_img = None
@@ -97,6 +97,7 @@ class ViewTask:
         sidebar_list_title = tk.Frame(sidebar_list, bg=sidebar_list_color)
         sidebar_list_title.pack(fill="x")
 
+        
         title_label = tk.Label(
             sidebar_list_title,
             text="BRAINFIT",
@@ -161,16 +162,16 @@ class ViewTask:
         pass
 
     def atras(self):
-        pass
+        self.master.mostrar_pagina(self.pageA)
 
     def vieTask(self):
         pass
     
     def dual(self):
-        pass
+        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ViewTask","BDual")
 
     def bradicinesia(self):
-        pass
+        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ViewTask","BBrad")
 
 if __name__ == '__main__':
     app = tk.Tk()

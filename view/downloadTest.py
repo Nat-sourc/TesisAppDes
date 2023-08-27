@@ -1,14 +1,8 @@
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import storage
 import os
 from tkinter import messagebox
 from zipfile import ZipFile
 import tkinter as tk
 
-def connect(url):
-    cred = credentials.Certificate(url)
-    firebase_admin.initialize_app(cred, {'storageBucket': 'tesis-ee155.appspot.com'})
 
 def download_test(selected_folder, selected_patient_id, bucket):
     # Obtener la carpeta de descarga seleccionada

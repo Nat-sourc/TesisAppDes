@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkcalendar import Calendar
 from PIL import Image, ImageTk
-from connectToFirebase import connect, download_test
+from downloadTest import download_test
 import firebase_admin
 from firebase_admin import credentials, firestore
 from firebase_admin import storage
@@ -10,11 +10,14 @@ from tkinter import Scrollbar
 import datetime
 from tkinter import Radiobutton
 from tkinter import filedialog
+from firebaseManager import FirebaseManager
 
 class ViewPatients:
     def __init__(self,master=None, root=None):
         self.master = master
         self.root = root
+        self.firebase_manager = FirebaseManager("./resources/serviceAccountKey.json")
+        self.bucket = self.firebase_manager.storage_bucket
         self.setup_ui()
 
     def setup_ui(self):
@@ -22,12 +25,7 @@ class ViewPatients:
         self.date_img = None
         self.loadimage = None
         self.folder_var=None
-        self.connect_firebase()
         self.create_sidebar()
-
-    def connect_firebase(self):
-        connect("./resources/serviceAccountKey.json")
-        self.bucket = storage.bucket() 
 
     def create_sidebar(self):
         global loadimage, lupa_img, date_img
@@ -251,7 +249,7 @@ class ViewPatients:
         if self.selected_patient_id:
             selected_folder = filedialog.askdirectory()
             download_test(selected_folder,self.selected_patient_id, self.bucket)
-            self.master.mostrar_paginaConId("ViewTask",self.selected_patient_id)
+            self.master.mostrar_paginaConId("ViewTask",self.selected_patient_id,"ViewPatients")
         else:
             print("No patient selected")
     

@@ -2,6 +2,7 @@ import tkinter as tk
 from start import Start
 from viewPatients import ViewPatients
 from viewTask import ViewTask
+from buttonsDualBrad import ButtonsDualBrad
 from tkinter import PhotoImage
 from PIL import Image, ImageTk  
 
@@ -14,7 +15,8 @@ class Aplicacion(tk.Tk):
         self.paginas = {
             "Start": Start,
             "ViewPatients": ViewPatients,
-            "ViewTask": ViewTask
+            "ViewTask": ViewTask,
+            "ButtonsDualBrad": ButtonsDualBrad
         }
 
         self.mostrar_pagina("Start")
@@ -28,13 +30,21 @@ class Aplicacion(tk.Tk):
             if pagina_nombre == nombre_pagina:
                 self.pagina_actual = pagina_clase(self)
                 break
-    def mostrar_paginaConId(self, nombre_pagina,id):
+    def mostrar_paginaConId(self, nombre_pagina,id,pageA):
         for widget in self.winfo_children():
             widget.destroy()  # Destruir todos los widgets en la ventana actual
 
         for pagina_nombre, pagina_clase in self.paginas.items():
             if pagina_nombre == nombre_pagina:
-                self.pagina_actual = pagina_clase(self,id)
+                self.pagina_actual = pagina_clase(self,id,pageA)
+                break
+    def mostrar_paginaConIdAndButtons(self, nombre_pagina,id,pageA,buttonsA):
+        for widget in self.winfo_children():
+            widget.destroy()  # Destruir todos los widgets en la ventana actual
+
+        for pagina_nombre, pagina_clase in self.paginas.items():
+            if pagina_nombre == nombre_pagina:
+                self.pagina_actual = pagina_clase(self,id,pageA,buttonsA)
                 break
 
 if __name__ == "__main__":
