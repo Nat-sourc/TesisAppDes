@@ -2,6 +2,7 @@ import tkinter as tk
 from start import Start
 from buttonsDual import ButtonsDual
 from buttonsBradicinesia import ButtonsBradicinesia
+from mostrarVideos import MostrarVideos
 from viewPatients import ViewPatients
 from viewTask import ViewTask
 from buttonsDualBrad import ButtonsDualBrad
@@ -20,7 +21,8 @@ class Aplicacion(tk.Tk):
             "ViewTask": ViewTask,
             "ButtonsDualBrad": ButtonsDualBrad,
             "ButtonDual": ButtonsDual,
-            "ButtonBradicinesia": ButtonsBradicinesia
+            "ButtonBradicinesia": ButtonsBradicinesia,
+            "MostrarVideos": MostrarVideos
         }
 
         self.mostrar_pagina("Start")
@@ -34,21 +36,21 @@ class Aplicacion(tk.Tk):
             if pagina_nombre == nombre_pagina:
                 self.pagina_actual = pagina_clase(self)
                 break
-    def mostrar_paginaConId(self, nombre_pagina,id,pageA):
+    def mostrar_paginaConId(self, nombre_pagina,id,pageA, path):
         for widget in self.winfo_children():
             widget.destroy()  # Destruir todos los widgets en la ventana actual
 
         for pagina_nombre, pagina_clase in self.paginas.items():
             if pagina_nombre == nombre_pagina:
-                self.pagina_actual = pagina_clase(self,id,pageA)
+                self.pagina_actual = pagina_clase(self,id,pageA, path)
                 break
-    def mostrar_paginaConIdAndButtons(self, nombre_pagina,id,pageA,buttonsA):
+    def mostrar_paginaConIdAndButtons(self, nombre_pagina,id,pageA,buttonsA, path):
         for widget in self.winfo_children():
             widget.destroy()  # Destruir todos los widgets en la ventana actual
 
         for pagina_nombre, pagina_clase in self.paginas.items():
             if pagina_nombre == nombre_pagina:
-                self.pagina_actual = pagina_clase(self,id,pageA,buttonsA)
+                self.pagina_actual = pagina_clase(self,id,pageA,buttonsA, path)
                 break
 
 if __name__ == "__main__":

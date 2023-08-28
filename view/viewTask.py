@@ -6,13 +6,16 @@ import firebase_admin
 from firebase_admin import firestore
 
 class ViewTask:
-    def __init__(self, master=None, patient_id=None, pageA=None,root=None):
+    def __init__(self, master=None, patient_id=None, pageA=None, path=None, root=None):
         self.master = master
         self.root = root
         self.patient_id=patient_id
-        self.pageA=pageA
+        self.pageA = pageA
+        self.path = path
         self.setup_ui()
+        print(patient_id)
         print(pageA)
+        print(path)
 
     def setup_ui(self):
         self.lupa_img = None
@@ -162,16 +165,16 @@ class ViewTask:
         pass
 
     def atras(self):
-        self.master.mostrar_pagina(self.pageA)
+        self.master.mostrar_pagina("ViewPatients")
 
     def vieTask(self):
         pass
     
     def dual(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ViewTask","BDual")
+        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ViewTask","BDual", self.path)
 
     def bradicinesia(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ViewTask","BBrad")
+        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ViewTask","BBrad", self.path)
 
 if __name__ == '__main__':
     app = tk.Tk()

@@ -6,12 +6,13 @@ import firebase_admin
 from firebase_admin import firestore
 
 class ButtonsBradicinesia:
-    def __init__(self, master=None, patient_id=None, pageA=None,buttonsA=None,root=None):
+    def __init__(self, master=None, patient_id=None, pageA=None,buttonsA=None,path=None, root=None):
         self.master = master
         self.root = root
         self.patient_id=patient_id
         self.pageA=pageA
         self.buttonsA=buttonsA
+        self.path = path
         self.setup_ui()
         print("soy pagina anterior " + self.pageA)
 
@@ -130,15 +131,15 @@ class ButtonsBradicinesia:
             tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
         if self.buttonsA=="BToqueD":
-            self.botonSC = tk.PhotoImage(file="../resources/img/manoDerecha.png")
-            self.botonSC = self.botonSC.subsample(2, 2) 
+            self.botonTD = tk.PhotoImage(file="../resources/img/manoDerecha.png")
+            self.botonTD = self.botonTD.subsample(2, 2) 
             # Create a Canvas widget
-            self.canvasSC = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
-            self.canvasSC.pack(side="top")
+            self.canvasTD = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+            self.canvasTD.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonSC = tk.Button(self.canvasSC, image=self.botonSC, bg="white", bd=0, command=self.simpleCog)
-            self.rounded_buttonSC.pack(side="top")
+            self.rounded_buttonTD = tk.Button(self.canvasTD, image=self.botonTD, bg="white", bd=0, command=self.toqueDedosMD)
+            self.rounded_buttonTD.pack(side="top")
 
             for _ in range(3):
                 tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
@@ -211,16 +212,18 @@ class ButtonsBradicinesia:
         
 
     def atras(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ButtonDual","BBradicinesia")
+        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ButtonsDualBrad","BBrad", self.path)
 
     def vieTask(self):
         self.master.mostrar_pagina("ViewTask")
         
     
-    def simpleMotor(self):
-        pass
+    def toqueDedosMD(self):
+        self.master.mostrar_paginaConIdAndButtons("MostrarVideos",self.patient_id,"ButtonsDualBrad","BToqueMD", self.path)
 
     def simpleCog(self):
+        pass
+    def simpleMotor(self):
         pass
 
     def toqueD(self):

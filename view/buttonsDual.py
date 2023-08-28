@@ -6,12 +6,13 @@ import firebase_admin
 from firebase_admin import firestore
 
 class ButtonsDual:
-    def __init__(self, master=None, patient_id=None, pageA=None,buttonsA=None,root=None):
+    def __init__(self, master=None, patient_id=None, pageA=None,buttonsA=None,path=None,root=None):
         self.master = master
         self.root = root
         self.patient_id=patient_id
         self.pageA=pageA
         self.buttonsA=buttonsA
+        self.path = path
         self.setup_ui()
         print(self.pageA)
 
@@ -210,7 +211,7 @@ class ButtonsDual:
         self.master.mostrar_pagina("ViewPatients")
 
     def atras(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ButtonDual","BDual")
+        self.master.mostrar_paginaConIdAndButtons("ButtonsDualBrad",self.patient_id,"ButtonDual","BDual", self.path)
 
     def vieTask(self):
         self.master.mostrar_pagina("ViewTask")

@@ -249,7 +249,8 @@ class ViewPatients:
         if self.selected_patient_id:
             selected_folder = filedialog.askdirectory()
             download_test(selected_folder,self.selected_patient_id, self.bucket)
-            self.master.mostrar_paginaConId("ViewTask",self.selected_patient_id,"ViewPatients")
+            print("soy folder",selected_folder)
+            self.master.mostrar_paginaConId("ViewTask",self.selected_patient_id,"ViewPatients", selected_folder)
         else:
             print("No patient selected")
     

@@ -6,12 +6,13 @@ import firebase_admin
 from firebase_admin import firestore
 
 class ButtonsDualBrad:
-    def __init__(self, master=None, patient_id=None, pageA=None,buttonsA=None,root=None):
+    def __init__(self, master=None, patient_id=None, pageA=None,buttonsA=None, path=None, root=None):
         self.master = master
         self.root = root
         self.patient_id=patient_id
         self.pageA=pageA
         self.buttonsA=buttonsA
+        self.path = path
         self.setup_ui()
         print(pageA)
 
@@ -200,34 +201,34 @@ class ButtonsDualBrad:
         pass
 
     def atras(self):
-        self.master.mostrar_pagina(self.pageA)
+        self.master.mostrar_paginaConId("ViewTask",self.patient_id,"ViewTask",self.path)
 
     def vieTask(self):
         self.master.mostrar_pagina("ViewTask")
         pass
 
     def simpleCog(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonDual",self.patient_id,"ButtonsDualBrad","BSimplesCog")
+        self.master.mostrar_paginaConIdAndButtons("ButtonDual",self.patient_id,"ButtonsDualBrad","BSimplesCog", self.path)
         pass
     
     def simpleMotor(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonDual",self.patient_id,"ButtonsDualBrad","BSimplesMotoras")
+        self.master.mostrar_paginaConIdAndButtons("ButtonDual",self.patient_id,"ButtonsDualBrad","BSimplesMotoras", self.path)
         pass
 
     def dual(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonDual",self.patient_id,"ButtonsDualBrad","BDual")
+        self.master.mostrar_paginaConIdAndButtons("ButtonDual",self.patient_id,"ButtonsDualBrad","BDual",self.path)
         pass
 
     def toqueD(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonBradicinesia",self.patient_id,"ButtonsDualBrad","BToqueD")
+        self.master.mostrar_paginaConIdAndButtons("ButtonBradicinesia",self.patient_id,"ButtonsDualBrad","BToqueD",self.path)
         pass
 
     def giroM(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonBradicinesia",self.patient_id,"ButtonsDualBrad","BGiroM")
+        self.master.mostrar_paginaConIdAndButtons("ButtonBradicinesia",self.patient_id,"ButtonsDualBrad","BGiroM",self.path)
         pass
 
     def AyCMano(self):
-        self.master.mostrar_paginaConIdAndButtons("ButtonBradicinesia",self.patient_id,"ButtonsDualBrad","BAyCMano")
+        self.master.mostrar_paginaConIdAndButtons("ButtonBradicinesia",self.patient_id,"ButtonsDualBrad","BAyCMano",self.path)
         pass
 
 if __name__ == '__main__':
