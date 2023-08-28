@@ -1,4 +1,4 @@
-#!C:\Users\LENOVO\OneDrive - Pontificia Universidad Javeriana\Octavo semestre\Tesis\AppEscritorio\TesisAppDes\myenv\Scripts\python.exe
+#!C:\Users\Lenovo\Desktop\Lau\Tesis\python\Escritorio\TesisAppDes\myenv\Scripts\python.exe
 # -*- coding: utf-8 -*-
 # Copyright 2022 Google LLC
 #

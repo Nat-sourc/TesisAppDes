@@ -16,7 +16,7 @@ class ViewPatients:
     def __init__(self,master=None, root=None):
         self.master = master
         self.root = root
-        self.firebase_manager = FirebaseManager("./resources/serviceAccountKey.json")
+        self.firebase_manager = FirebaseManager("../resources/serviceAccountKey.json")
         self.bucket = self.firebase_manager.storage_bucket
         self.setup_ui()
 
@@ -61,8 +61,8 @@ class ViewPatients:
         sidebar_list2 = tk.Frame(sidebar_listb, bg="#C4F1EB", width=150)  # Cambiar el color y el ancho según tu preferencia
         sidebar_list2.pack(fill="both", side="left", expand=True)
 
-        loadimage = Image.open("./resources/img/logout.png")
-        loadimage = tk.PhotoImage(file="./resources/img/logout.png")
+        loadimage = Image.open("../resources/img/logout.png")
+        loadimage = tk.PhotoImage(file="../resources/img/logout.png")
         loadimage = loadimage.subsample(8, 8)
 
         # Create a Canvas widget
@@ -87,8 +87,8 @@ class ViewPatients:
         )
         patient_id_label_frame.pack(anchor="w", padx=20, pady=20)
         
-        lupa_img = Image.open("./resources/img/lupa.png")
-        lupa_img = tk.PhotoImage(file="./resources/img/lupa.png")
+        lupa_img = Image.open("../resources/img/lupa.png")
+        lupa_img = tk.PhotoImage(file="../resources/img/lupa.png")
         lupa_img = lupa_img .subsample(4, 4) 
 
         # Crear un Frame para contener la imagen y el texto
@@ -118,8 +118,8 @@ class ViewPatients:
         )
         patient_id_label_frame2.pack(anchor="w", padx=20, pady=20)
 
-        date_img = Image.open("./resources/img/calender.png")
-        date_img = tk.PhotoImage(file="./resources/img/calender.png")
+        date_img = Image.open("../resources/img/calender.png")
+        date_img = tk.PhotoImage(file="../resources/img/calender.png")
         date_img = date_img .subsample(4, 4) 
 
         # Crear un Frame para contener la imagen y el texto

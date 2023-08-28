@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\LENOVO\OneDrive - Pontificia Universidad Javeriana\Octavo semestre\Tesis\AppEscritorio\TesisAppDes\myenv
+set VIRTUAL_ENV=C:\Users\Lenovo\Desktop\Lau\Tesis\python\Escritorio\TesisAppDes\myenv
 
 if not defined PROMPT set PROMPT=$P$G
 

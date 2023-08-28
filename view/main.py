@@ -1,5 +1,7 @@
 import tkinter as tk
 from start import Start
+from buttonsDual import ButtonsDual
+from buttonsBradicinesia import ButtonsBradicinesia
 from viewPatients import ViewPatients
 from viewTask import ViewTask
 from buttonsDualBrad import ButtonsDualBrad
@@ -16,11 +18,13 @@ class Aplicacion(tk.Tk):
             "Start": Start,
             "ViewPatients": ViewPatients,
             "ViewTask": ViewTask,
-            "ButtonsDualBrad": ButtonsDualBrad
+            "ButtonsDualBrad": ButtonsDualBrad,
+            "ButtonDual": ButtonsDual,
+            "ButtonBradicinesia": ButtonsBradicinesia
         }
 
         self.mostrar_pagina("Start")
-        #self.image_hospital = Image.open("./resources/img/hospital.png")
+        #self.image_hospital = Image.open("../resources/img/hospital.png")
 
     def mostrar_pagina(self, nombre_pagina):
         for widget in self.winfo_children():
