@@ -26,7 +26,7 @@ class Aplicacion(tk.Tk):
         }
 
         self.mostrar_pagina("Start")
-        #self.image_hospital = Image.open("../resources/img/hospital.png")
+        #self.image_hospital = Image.open("./resources/img/hospital.png")
 
     def mostrar_pagina(self, nombre_pagina):
         for widget in self.winfo_children():

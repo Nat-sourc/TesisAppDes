@@ -38,8 +38,8 @@ class ViewTask:
         for _ in range(3):
             tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
 
-        homeimage = Image.open("../resources/img/home.png")
-        homeimage = tk.PhotoImage(file="../resources/img/home.png")
+        homeimage = Image.open("./resources/img/home.png")
+        homeimage = tk.PhotoImage(file="./resources/img/home.png")
         homeimage = homeimage.subsample(8, 8)
 
         canvashome = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -52,8 +52,8 @@ class ViewTask:
         rounded_buttonhome = tk.Button(canvashome, image=homeimage, bg=sidebar_color, bd=0, command=self.home)
         rounded_buttonhome.pack(side="top", pady=10)
 
-        volverATaskimage = Image.open("../resources/img/volverATask.png")
-        volverATaskimage = tk.PhotoImage(file="../resources/img/volverATask.png")
+        volverATaskimage = Image.open("./resources/img/volverATask.png")
+        volverATaskimage = tk.PhotoImage(file="./resources/img/volverATask.png")
         volverATaskimage = volverATaskimage.subsample(8, 8)
 
         canvasvolverATask = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -65,8 +65,8 @@ class ViewTask:
         rounded_buttonVolverATask = tk.Button(canvasvolverATask, image=volverATaskimage, bg=sidebar_color, bd=0, command=self.vieTask)
         rounded_buttonVolverATask.pack(side="top", pady=10)
 
-        volverimage = Image.open("../resources/img/atras.png")
-        volverimage = tk.PhotoImage(file="../resources/img/atras.png")
+        volverimage = Image.open("./resources/img/atras.png")
+        volverimage = tk.PhotoImage(file="./resources/img/atras.png")
         volverimage = volverimage.subsample(8, 8)
 
         canvasvolver = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -78,8 +78,8 @@ class ViewTask:
         rounded_buttonVolver = tk.Button(canvasvolver, image=volverimage, bg=sidebar_color, bd=0, command=self.atras)
         rounded_buttonVolver.pack(side="top", pady=10)
 
-        loadimage = Image.open("../resources/img/logout.png")
-        loadimage = tk.PhotoImage(file="../resources/img/logout.png")
+        loadimage = Image.open("./resources/img/logout.png")
+        loadimage = tk.PhotoImage(file="./resources/img/logout.png")
         loadimage = loadimage.subsample(8, 8)
 
         canvas = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -113,7 +113,7 @@ class ViewTask:
         for _ in range(3):
             tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-        self.botonBrad = tk.PhotoImage(file="../resources/img/botonBrad.png")
+        self.botonBrad = tk.PhotoImage(file="./resources/img/botonBrad.png")
         self.botonBrad = self.botonBrad.subsample(5, 5) 
         # Create a Canvas widget
         self.canvasBrad = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
@@ -126,7 +126,7 @@ class ViewTask:
         for _ in range(3):
             tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-        self.botonDual = tk.PhotoImage(file="../resources/img/botonDual.png")
+        self.botonDual = tk.PhotoImage(file="./resources/img/botonDual.png")
         self.botonDual = self.botonDual.subsample(5, 5) 
         # Create a Canvas widget
         self.canvasDual = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)

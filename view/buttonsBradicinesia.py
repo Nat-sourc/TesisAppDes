@@ -36,8 +36,8 @@ class ButtonsBradicinesia:
         for _ in range(3):
             tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
 
-        homeimage = Image.open("../resources/img/home.png")
-        homeimage = tk.PhotoImage(file="../resources/img/home.png")
+        homeimage = Image.open("./resources/img/home.png")
+        homeimage = tk.PhotoImage(file="./resources/img/home.png")
         homeimage = homeimage.subsample(8, 8)
 
         canvashome = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -50,8 +50,8 @@ class ButtonsBradicinesia:
         rounded_buttonhome = tk.Button(canvashome, image=homeimage, bg=sidebar_color, bd=0, command=self.home)
         rounded_buttonhome.pack(side="top", pady=10)
 
-        volverATaskimage = Image.open("../resources/img/volverATask.png")
-        volverATaskimage = tk.PhotoImage(file="../resources/img/volverATask.png")
+        volverATaskimage = Image.open("./resources/img/volverATask.png")
+        volverATaskimage = tk.PhotoImage(file="./resources/img/volverATask.png")
         volverATaskimage = volverATaskimage.subsample(8, 8)
 
         canvasvolverATask = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -63,8 +63,8 @@ class ButtonsBradicinesia:
         rounded_buttonVolverATask = tk.Button(canvasvolverATask, image=volverATaskimage, bg=sidebar_color, bd=0, command=self.vieTask)
         rounded_buttonVolverATask.pack(side="top", pady=10)
 
-        volverimage = Image.open("../resources/img/atras.png")
-        volverimage = tk.PhotoImage(file="../resources/img/atras.png")
+        volverimage = Image.open("./resources/img/atras.png")
+        volverimage = tk.PhotoImage(file="./resources/img/atras.png")
         volverimage = volverimage.subsample(8, 8)
 
         canvasvolver = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -76,8 +76,8 @@ class ButtonsBradicinesia:
         rounded_buttonVolver = tk.Button(canvasvolver, image=volverimage, bg=sidebar_color, bd=0, command=self.atras)
         rounded_buttonVolver.pack(side="top", pady=10)
 
-        loadimage = Image.open("../resources/img/logout.png")
-        loadimage = tk.PhotoImage(file="../resources/img/logout.png")
+        loadimage = Image.open("./resources/img/logout.png")
+        loadimage = tk.PhotoImage(file="./resources/img/logout.png")
         loadimage = loadimage.subsample(8, 8)
 
         canvas = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -131,7 +131,7 @@ class ButtonsBradicinesia:
             tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
         if self.buttonsA=="BToqueD":
-            self.botonTD = tk.PhotoImage(file="../resources/img/manoDerecha.png")
+            self.botonTD = tk.PhotoImage(file="./resources/img/manoDerecha.png")
             self.botonTD = self.botonTD.subsample(2, 2) 
             # Create a Canvas widget
             self.canvasTD = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
@@ -144,7 +144,7 @@ class ButtonsBradicinesia:
             for _ in range(3):
                 tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-            self.botonSM = tk.PhotoImage(file="../resources/img/manoIzquierda.png")
+            self.botonSM = tk.PhotoImage(file="./resources/img/manoIzquierda.png")
             self.botonSM = self.botonSM.subsample(2, 2)
             # Create a Canvas widget
             self.canvasSM = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
@@ -155,7 +155,7 @@ class ButtonsBradicinesia:
             self.rounded_buttonSM.pack(side="top")
 
         if self.buttonsA=="BGiroM":
-            self.botonSC = tk.PhotoImage(file="../resources/img/manoDerecha.png")
+            self.botonSC = tk.PhotoImage(file="./resources/img/manoDerecha.png")
             self.botonSC = self.botonSC.subsample(2, 2) 
             # Create a Canvas widget
             self.canvasSC = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
@@ -168,7 +168,7 @@ class ButtonsBradicinesia:
             for _ in range(3):
                 tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-            self.botonSM = tk.PhotoImage(file="../resources/img/manoIzquierda.png")
+            self.botonSM = tk.PhotoImage(file="./resources/img/manoIzquierda.png")
             self.botonSM = self.botonSM.subsample(2, 2)
             # Create a Canvas widget
             self.canvasSM = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
@@ -179,7 +179,7 @@ class ButtonsBradicinesia:
             self.rounded_buttonSM.pack(side="top")
 
         if self.buttonsA=="BAyCMano":
-            self.botonTD = tk.PhotoImage(file="../resources/img/manoDerecha.png")
+            self.botonTD = tk.PhotoImage(file="./resources/img/manoDerecha.png")
             self.botonTD = self.botonTD.subsample(2, 2) 
             # Create a Canvas widget
             self.canvasTD = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
@@ -192,7 +192,7 @@ class ButtonsBradicinesia:
             for _ in range(3):
                 tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-            self.botonGM = tk.PhotoImage(file="../resources/img/manoIzquierda.png")
+            self.botonGM = tk.PhotoImage(file="./resources/img/manoIzquierda.png")
             self.botonGM = self.botonGM.subsample(2, 2) 
             # Create a Canvas widget
             self.canvasGM = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
