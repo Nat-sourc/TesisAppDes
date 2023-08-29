@@ -151,7 +151,7 @@ class MostrarAudios:
             )
             title_label.pack(side="left",padx=10, pady=10)
 
-            self.path = self.path + "/" +"audio.mp3" 
+            self.path = self.path + "/" +"DUAL.mp3" 
         
         
 
