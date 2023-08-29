@@ -138,7 +138,7 @@ class ButtonsDual:
             self.canvasFV.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonFV = tk.Button(self.botonFV, image=self.botonFV, bg="white", bd=0, command=self.fuenciaverbal)
+            self.rounded_buttonFV = tk.Button(self.canvasFV, image=self.botonFV, bg="white", bd=0, command=self.fuenciaverbal)
             self.rounded_buttonFV.pack(side="top")
 
             for _ in range(3):
@@ -217,10 +217,10 @@ class ButtonsDual:
         self.master.mostrar_pagina("ViewTask")
     
     def fuenciaverbal(self):
-        pass
+        self.master.mostrar_paginaConIdAndButtons("MostrarAudios",self.patient_id,"ButtonsDualBrad","BFluenciaV", self.path)
 
     def aritmetica(self):
-        pass
+        self.master.mostrar_paginaConIdAndButtons("MostrarAudios",self.patient_id,"ButtonsDualBrad","BAritmetica", self.path)
 
     def brazo(self):
         self.master.mostrar_paginaConIdAndButtons("MostrarVideosDual",self.patient_id,"ButtonsDualBrad","BBrazo", self.path)

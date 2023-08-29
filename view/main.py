@@ -4,11 +4,10 @@ from buttonsDual import ButtonsDual
 from buttonsBradicinesia import ButtonsBradicinesia
 from mostrarVideos import MostrarVideos
 from mostrarvideosDual import MostrarVideosDual
+from mostrarAudios import MostrarAudios
 from viewPatients import ViewPatients
 from viewTask import ViewTask
-from buttonsDualBrad import ButtonsDualBrad
-from tkinter import PhotoImage
-from PIL import Image, ImageTk  
+from buttonsDualBrad import ButtonsDualBrad 
 
 class Aplicacion(tk.Tk):
     def __init__(self):
@@ -24,7 +23,8 @@ class Aplicacion(tk.Tk):
             "ButtonDual": ButtonsDual,
             "ButtonBradicinesia": ButtonsBradicinesia,
             "MostrarVideos": MostrarVideos,
-            "MostrarVideosDual": MostrarVideosDual
+            "MostrarVideosDual": MostrarVideosDual,
+            "MostrarAudios": MostrarAudios
         }
 
         self.mostrar_pagina("Start")
