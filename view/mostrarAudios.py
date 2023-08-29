@@ -153,9 +153,38 @@ class MostrarAudios:
 
             self.path = self.path + "/" +"DUAL.mp3" 
         
-        
+        sidebar_palabrasAux = tk.Frame(sidebar_list, bg="white", width=500)
+        sidebar_palabrasAux.pack(fill="both", side="left", expand=True)
 
- 
+        sidebar_palabras = tk.Frame(sidebar_palabrasAux, bg="white", width=500)
+        sidebar_palabras.pack(fill="both", side="left", expand=True)
+
+        # Add a wider border to the sidebar_palabras frame
+        sidebar_palabras_title = tk.Frame(sidebar_palabras, bg=sidebar_list_color)
+        sidebar_palabras_title.pack(fill="x")
+
+        sidebar_listb = tk.Frame(sidebar_palabras, bg="white", highlightbackground=sidebar_list_color, highlightthickness=4)  # Increase highlightthickness
+        sidebar_listb.pack(fill="both", side="left", expand=True)
+
+        if self.buttonsA=="BFluenciaV":
+            words_title = tk.Label(
+                sidebar_palabras_title,
+                text="Lista Palabras",
+                font=("Arial", 14, "bold"),
+                bg=sidebar_list_color,
+                fg="#00BFA6"
+            )
+            words_title.pack(padx=10, pady=10)
+
+        elif self.buttonsA=="BAritmetica":
+            words_title = tk.Label(
+                sidebar_palabras_title,
+                text="Lista Numeros",
+                font=("Arial", 14, "bold"),
+                bg=sidebar_list_color,
+                fg="#00BFA6"
+            )
+            words_title.pack(padx=10, pady=10)
 
     def logout(self):
         self.master.mostrar_pagina("Start")
