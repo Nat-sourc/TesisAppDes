@@ -3,6 +3,7 @@ from start import Start
 from buttonsDual import ButtonsDual
 from buttonsBradicinesia import ButtonsBradicinesia
 from mostrarVideos import MostrarVideos
+from mostrarvideosDual import MostrarVideosDual
 from viewPatients import ViewPatients
 from viewTask import ViewTask
 from buttonsDualBrad import ButtonsDualBrad
@@ -22,7 +23,8 @@ class Aplicacion(tk.Tk):
             "ButtonsDualBrad": ButtonsDualBrad,
             "ButtonDual": ButtonsDual,
             "ButtonBradicinesia": ButtonsBradicinesia,
-            "MostrarVideos": MostrarVideos
+            "MostrarVideos": MostrarVideos,
+            "MostrarVideosDual": MostrarVideosDual
         }
 
         self.mostrar_pagina("Start")

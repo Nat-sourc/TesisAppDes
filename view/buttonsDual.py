@@ -127,80 +127,80 @@ class ButtonsDual:
                 fg="#00BFA6"
             )
             title_label.pack(side="left",padx=10, pady=10)
-        for _ in range(4):
+        for _ in range(6):
             tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
         if self.buttonsA=="BSimplesCog":
-            self.botonSC = tk.PhotoImage(file="./resources/img/btFluenciaVerbal.png")
-            self.botonSC = self.botonSC.subsample(2, 2) 
+            self.botonFV = tk.PhotoImage(file="./resources/img/btFluenciaVerbal.png")
+            self.botonFV = self.botonFV.subsample(2, 2) 
             # Create a Canvas widget
-            self.canvasSC = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
-            self.canvasSC.pack(side="top")
+            self.canvasFV = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+            self.canvasFV.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonSC = tk.Button(self.canvasSC, image=self.botonSC, bg="white", bd=0, command=self.simpleCog)
-            self.rounded_buttonSC.pack(side="top")
+            self.rounded_buttonFV = tk.Button(self.botonFV, image=self.botonFV, bg="white", bd=0, command=self.fuenciaverbal)
+            self.rounded_buttonFV.pack(side="top")
 
             for _ in range(3):
                 tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-            self.botonSM = tk.PhotoImage(file="./resources/img/btAritmetica.png")
-            self.botonSM = self.botonSM.subsample(2, 2)
+            self.botonArit = tk.PhotoImage(file="./resources/img/btAritmetica.png")
+            self.botonArit = self.botonArit.subsample(2, 2)
             # Create a Canvas widget
-            self.canvasSM = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
-            self.canvasSM.pack(side="top")
+            self.canvasArit = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+            self.canvasArit.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonSM = tk.Button(self.canvasSM, image=self.botonSM, bg="white", bd=0, command=self.simpleMotor)
-            self.rounded_buttonSM.pack(side="top")
+            self.rounded_buttonArit = tk.Button(self.canvasArit, image=self.botonArit, bg="white", bd=0, command=self.aritmetica)
+            self.rounded_buttonArit.pack(side="top")
 
         if self.buttonsA=="BSimplesMotoras":
-            self.botonSC = tk.PhotoImage(file="./resources/img/btBrazo.png")
-            self.botonSC = self.botonSC.subsample(2, 2) 
+            self.botonbrazo = tk.PhotoImage(file="./resources/img/btBrazo.png")
+            self.botonbrazo = self.botonbrazo.subsample(2, 2) 
             # Create a Canvas widget
-            self.canvasSC = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
-            self.canvasSC.pack(side="top")
+            self.canvasbrazo = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+            self.canvasbrazo.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonSC = tk.Button(self.canvasSC, image=self.botonSC, bg="white", bd=0, command=self.simpleCog)
-            self.rounded_buttonSC.pack(side="top")
+            self.rounded_buttonbrazo = tk.Button(self.canvasbrazo, image=self.botonbrazo, bg="white", bd=0, command=self.brazo)
+            self.rounded_buttonbrazo.pack(side="top")
 
             for _ in range(3):
                 tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-            self.botonSM = tk.PhotoImage(file="./resources/img/btMarcha.png")
-            self.botonSM = self.botonSM.subsample(2, 2)
+            self.botonMarcha = tk.PhotoImage(file="./resources/img/btMarcha.png")
+            self.botonMarcha = self.botonMarcha.subsample(2, 2)
             # Create a Canvas widget
-            self.canvasSM = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
-            self.canvasSM.pack(side="top")
+            self.canvasMarcha = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+            self.canvasMarcha.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonSM = tk.Button(self.canvasSM, image=self.botonSM, bg="white", bd=0, command=self.simpleMotor)
-            self.rounded_buttonSM.pack(side="top")
+            self.rounded_buttonMarcha = tk.Button(self.canvasMarcha, image=self.botonMarcha, bg="white", bd=0, command=self.marcha)
+            self.rounded_buttonMarcha.pack(side="top")
 
         if self.buttonsA=="BDual":
-            self.botonTD = tk.PhotoImage(file="./resources/img/btBrazoDual.png")
-            self.botonTD = self.botonTD.subsample(2, 2) 
+            self.botonbrazoDual = tk.PhotoImage(file="./resources/img/btBrazoDual.png")
+            self.botonbrazoDual = self.botonbrazoDual.subsample(2, 2) 
             # Create a Canvas widget
-            self.canvasTD = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
-            self.canvasTD.pack(side="top")
+            self.canvasbrazoDual = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+            self.canvasbrazoDual.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonTD = tk.Button(self.canvasTD, image=self.botonTD, bg="white", bd=0, command=self.toqueD)
-            self.rounded_buttonTD.pack(side="top")
+            self.rounded_buttonbrazoDual = tk.Button(self.canvasbrazoDual, image=self.botonbrazoDual, bg="white", bd=0, command=self.brazoDual)
+            self.rounded_buttonbrazoDual.pack(side="top")
 
             for _ in range(3):
                 tk.Label(sidebar_list, text="", bg=sidebar_blank_color).pack()  # Add spacing
 
-            self.botonGM = tk.PhotoImage(file="./resources/img/btMarchaDual.png")
-            self.botonGM = self.botonGM.subsample(2, 2) 
+            self.botonMarchaDual = tk.PhotoImage(file="./resources/img/btMarchaDual.png")
+            self.botonMarchaDual = self.botonMarchaDual.subsample(2, 2) 
             # Create a Canvas widget
-            self.canvasGM = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
-            self.canvasGM.pack(side="top")
+            self.canvasMarchaDual = tk.Canvas(sidebar_list, bg=sidebar_blank_color, highlightthickness=0)
+            self.canvasMarchaDual.pack(side="top")
 
             # Create a rounded button with the loaded image
-            self.rounded_buttonGM = tk.Button(self.canvasGM, image=self.botonGM, bg="white", bd=0, command=self.giroM)
-            self.rounded_buttonGM.pack(side="top")
+            self.rounded_buttonMarchaDual = tk.Button(self.canvasMarchaDual, image=self.botonMarchaDual, bg="white", bd=0, command=self.marchaDual)
+            self.rounded_buttonMarchaDual.pack(side="top")
 
 
 
@@ -216,23 +216,23 @@ class ButtonsDual:
     def vieTask(self):
         self.master.mostrar_pagina("ViewTask")
     
-    def simpleMotor(self):
+    def fuenciaverbal(self):
         pass
 
-    def simpleCog(self):
+    def aritmetica(self):
         pass
 
-    def toqueD(self):
-        pass
+    def brazo(self):
+        self.master.mostrar_paginaConIdAndButtons("MostrarVideosDual",self.patient_id,"ButtonsDualBrad","BBrazo", self.path)
 
-    def dual(self):
-        pass
+    def marcha(self):
+        self.master.mostrar_paginaConIdAndButtons("MostrarVideosDual",self.patient_id,"ButtonsDualBrad","BMarcha", self.path)
 
-    def giroM(self):
-        pass
+    def brazoDual(self):
+        self.master.mostrar_paginaConIdAndButtons("MostrarVideosDual",self.patient_id,"ButtonsDualBrad","BBrazoDual", self.path)
 
-    def AyCMano(self):
-        pass
+    def marchaDual(self):
+        self.master.mostrar_paginaConIdAndButtons("MostrarVideosDual",self.patient_id,"ButtonsDualBrad","BMarchaDual", self.path)
 
 if __name__ == '__main__':
     app = tk.Tk()
