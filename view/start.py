@@ -8,10 +8,10 @@ class Start(tk.Frame):
         self.master = master
         self.pack()
 
-        CREDS_PATH = Path(__file__).parent / Path("./resources/serviceAccountKey.json")
+        CREDS_PATH = Path(__file__).parent / Path("../resources/serviceAccountKey.json")
         self.master.configure(background="#D4ECE5")  # Agregar esta línea
         # Cargar la imagen
-        self.image = PhotoImage(file="./resources/img/hospital.png")
+        self.image = PhotoImage(file="../resources/img/hospital.png")
 
         # Crear un Frame para contener la imagen y el título
         self.frame = tk.Frame(root, bg="#D4ECE5")  # Cambia el color de fondo del marco aquí
@@ -42,7 +42,7 @@ class Start(tk.Frame):
         for _ in range(3):
             tk.Label(root, text="", bg="#D4ECE5").pack()
 
-        self.imageMedicos = PhotoImage(file="./resources/img/doctors.png")
+        self.imageMedicos = PhotoImage(file="../resources/img/doctors.png")
 
         # Ajustar el tamaño de la imagen de doctors
         self.imageMedicos = self.imageMedicos.subsample(2, 2) # Cambia los valores para ajustar el tamaño
@@ -54,7 +54,7 @@ class Start(tk.Frame):
         # Agregar espacio entre la imagen de doctors y el botón
         tk.Label(root, text="", bg="#D4ECE5").pack()
 
-        self.loadimage = tk.PhotoImage(file="./resources/img/button_comencemos.png")
+        self.loadimage = tk.PhotoImage(file="../resources/img/button_comencemos.png")
         self.loadimage = self.loadimage.subsample(4, 4) 
         # Create a Canvas widget
         self.canvas = tk.Canvas(root)

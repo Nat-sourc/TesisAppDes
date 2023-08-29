@@ -27,9 +27,9 @@ class MostrarAudios:
         self.date_img = None
         self.loadimage = None
         self.is_playing = False
-        self.btn_vidplay_img = tk.PhotoImage(file = "./resources/img/btn_play.png")
+        self.btn_vidplay_img = tk.PhotoImage(file = "../resources/img/btn_play.png")
         self.btn_vidplay_img = self.btn_vidplay_img.subsample(3, 3)
-        self.btn_vidpause_img = tk.PhotoImage(file = "./resources/img/btn_pause.png")
+        self.btn_vidpause_img = tk.PhotoImage(file = "../resources/img/btn_pause.png")
         self.btn_vidpause_img = self.btn_vidpause_img.subsample(3, 3)
         self.create_sidebar()
 
@@ -46,8 +46,8 @@ class MostrarAudios:
         for _ in range(3):
             tk.Label(sidebar, text="", bg=sidebar_color).pack()  # Add spacing
 
-        homeimage = Image.open("./resources/img/home.png")
-        homeimage = tk.PhotoImage(file="./resources/img/home.png")
+        homeimage = Image.open("../resources/img/home.png")
+        homeimage = tk.PhotoImage(file="../resources/img/home.png")
         homeimage = homeimage.subsample(8, 8)
 
         canvashome = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -60,8 +60,8 @@ class MostrarAudios:
         rounded_buttonhome = tk.Button(canvashome, image=homeimage, bg=sidebar_color, bd=0, command=self.home)
         rounded_buttonhome.pack(side="top", pady=10)
 
-        volverATaskimage = Image.open("./resources/img/volverATask.png")
-        volverATaskimage = tk.PhotoImage(file="./resources/img/volverATask.png")
+        volverATaskimage = Image.open("../resources/img/volverATask.png")
+        volverATaskimage = tk.PhotoImage(file="../resources/img/volverATask.png")
         volverATaskimage = volverATaskimage.subsample(8, 8)
 
         canvasvolverATask = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -73,8 +73,8 @@ class MostrarAudios:
         rounded_buttonVolverATask = tk.Button(canvasvolverATask, image=volverATaskimage, bg=sidebar_color, bd=0, command=self.vieTask)
         rounded_buttonVolverATask.pack(side="top", pady=10)
 
-        volverimage = Image.open("./resources/img/atras.png")
-        volverimage = tk.PhotoImage(file="./resources/img/atras.png")
+        volverimage = Image.open("../resources/img/atras.png")
+        volverimage = tk.PhotoImage(file="../resources/img/atras.png")
         volverimage = volverimage.subsample(8, 8)
 
         canvasvolver = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -86,8 +86,8 @@ class MostrarAudios:
         rounded_buttonVolver = tk.Button(canvasvolver, image=volverimage, bg=sidebar_color, bd=0, command=self.atras)
         rounded_buttonVolver.pack(side="top", pady=10)
 
-        loadimage = Image.open("./resources/img/logout.png")
-        loadimage = tk.PhotoImage(file="./resources/img/logout.png")
+        loadimage = Image.open("../resources/img/logout.png")
+        loadimage = tk.PhotoImage(file="../resources/img/logout.png")
         loadimage = loadimage.subsample(8, 8)
 
         canvas = tk.Canvas(sidebar, bg=sidebar_color, highlightthickness=0)
@@ -116,7 +116,7 @@ class MostrarAudios:
         button_frame = tk.Frame(self.audio_frame, bg="#E5F5F3")
         button_frame.pack(side="top", pady=10)
 
-        imageAudio = Image.open("./resources/img/audio.png")
+        imageAudio = Image.open("../resources/img/audio.png")
         imageAudio = ImageTk.PhotoImage(imageAudio)
         image_label = tk.Label(button_frame, image=imageAudio, bg="#E5F5F3")
         image_label.grid(row=0, column=0, columnspan=2, pady=10)
